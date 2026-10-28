@@ -1,0 +1,4 @@
+-- A book can be out on only one loan at a time.
+-- Add a partial unique index on loans (book_id) that applies only to rows where returned_at IS NULL.
+-- Then add an ordinary index on loans (member_id), because "what has this member borrowed?" is a common question.
+-- TODO

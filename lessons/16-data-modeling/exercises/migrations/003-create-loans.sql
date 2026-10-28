@@ -1,0 +1,8 @@
+-- Create the loans table. One row is one time a member borrowed a book.
+--   id           a whole number the database generates, primary key
+--   book_id      required, must be the id of a real book
+--   member_id    required, must be the id of a real member
+--   borrowed_at  timestamptz, required, defaults to the current time
+--   returned_at  timestamptz, empty until the book comes back, never earlier than borrowed_at
+-- Deleting a book or member who has loans must be refused (ON DELETE RESTRICT).
+-- TODO

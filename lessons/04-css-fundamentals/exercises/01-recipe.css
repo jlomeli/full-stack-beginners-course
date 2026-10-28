@@ -1,0 +1,41 @@
+/*
+Style the recipe page, 01-recipe.html. Open the page in your browser as you
+work and reload after each change. Run `npm test 04` to check your work.
+Delete this comment when you start.
+
+Write every color as a hex code, such as #1f2937.
+
+1. Custom properties. On :root, define these seven:
+   --color-text, --color-background, --color-accent, --color-tip-background
+   --space-small, --space-medium, --space-large
+   The colors are colors and the spaces are lengths. Pick values you like,
+   then use var(...) for every color and every margin and padding below.
+
+2. Box sizing. Every element, including ::before and ::after, uses
+   box-sizing: border-box.
+
+3. body. Set color to --color-text and background-color to
+   --color-background, with at least 4.5:1 contrast between them. Use a font
+   stack that ends in a generic family, such as system-ui, sans-serif. Set a
+   unitless line-height between 1.4 and 1.8.
+
+4. Headings. Color h1 and h2 with --color-accent, which also needs at least
+   4.5:1 contrast on the background. Make h1 larger than h2, and h2 larger
+   than the body text. Use rem or px for font-size.
+
+5. main. Cap its width at 50rem or less and center it with automatic left
+   and right margins. Pad it with --space-medium.
+
+6. img. It never grows wider than its container (max-width: 100%) and keeps
+   its proportions (height: auto).
+
+7. .tip. The tip has background-color --color-tip-background, a 4px solid
+   left border in --color-accent, and padding of --space-medium. Use the
+   background-color property, not the background shorthand.
+
+8. .meta dt. The terms in the Serves / Prep time / Cook time list are bold
+   (font-weight 600 or more).
+
+9. li + li. Every list item after the first has margin-top of
+   --space-small. The first item in a list has no margin-top.
+*/

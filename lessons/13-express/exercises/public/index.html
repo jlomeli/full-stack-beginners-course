@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Notes</title>
+		<style>
+			body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1rem; }
+			form { display: grid; gap: 0.5rem; margin-bottom: 2rem; }
+			li { margin-bottom: 1rem; }
+			.error { color: #b00020; }
+		</style>
+	</head>
+	<body>
+		<h1>Notes</h1>
+
+		<form id="new-note">
+			<label>Title <input name="title" required /></label>
+			<label>Body <textarea name="body" rows="3"></textarea></label>
+			<button>Add note</button>
+		</form>
+
+		<p id="status"></p>
+		<ul id="notes"></ul>
+
+		<script type="module">
+			const list = document.querySelector('#notes');
+			const status = document.querySelector('#status');
+			const form = document.querySelector('#new-note');
+
+			async function showNotes() {
+				const res = await fetch('/notes');
+				if (!res.ok) {
+					status.textContent = `GET /notes answered ${res.status}. Is the route written yet?`;
+					status.className = 'error';
+					return;
+				}
+				const notes = await res.json();
+				status.textContent = `${notes.length} note(s)`;
+				status.className = '';
+				list.replaceChildren(
+					...notes.map((note) => {
+						const item = document.createElement('li');
+						const title = document.createElement('strong');
+						title.textContent = note.title;
+						item.append(title, ` ${note.body ?? ''}`);
+						return item;
+					}),
+				);
+			}
+
+			form.addEventListener('submit', async (event) => {
+				event.preventDefault();
+				const data = new FormData(form);
+				await fetch('/notes', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ title: data.get('title'), body: data.get('body') }),
+				});
+				form.reset();
+				showNotes();
+			});
+
+			showNotes();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+/*
+Layout 3: a page with grid areas. Rebuild this layout for 03-page.html.
+Edit only this file. Delete this comment when you start.
+
+The page has four regions, in this order in the HTML: header, sidebar,
+content, footer.
+
+Window 768px (48rem) and wider:
+
+  +------------------------------------------------+
+  | HEADER                                         |
+  +---------------+--------------------------------+
+  | SIDEBAR       | CONTENT                        |
+  | (14rem wide)  | (takes the rest of the width)  |
+  |               |                                |
+  +---------------+--------------------------------+
+  | FOOTER                                         |
+  +------------------------------------------------+
+
+Window narrower than 768px: one column, in HTML order.
+
+  +----------------+
+  | HEADER         |
+  +----------------+
+  | SIDEBAR        |
+  +----------------+
+  | CONTENT        |
+  +----------------+
+  | FOOTER         |
+  +----------------+
+
+Requirements:
+
+1. .page is a grid with a gap of at least 1rem. It is at most 75rem wide
+   (max-width) and centered with margin-left and margin-right of auto.
+
+2. Base styles (no media query) are the one-column layout. Do not set
+   grid-template-columns there, or set it to a single track. The regions
+   stack in HTML order.
+
+3. @media (min-width: 48rem) turns on the two-column layout. Set
+   grid-template-columns to a fixed 14rem track and a flexible 1fr track,
+   and describe the regions with grid-template-areas:
+
+       grid-template-areas:
+           "header header"
+           "sidebar content"
+           "footer footer";
+
+4. Give each region its area name with grid-area: header, sidebar,
+   content, and footer. (The names in grid-area must match the names in
+   grid-template-areas.)
+
+5. Give every region a background color or border so you can see where it
+   starts and ends, and padding so the text doesn't touch the edges.
+*/

@@ -1,0 +1,58 @@
+/*
+Layout 2: grid and media queries. Rebuild this layout for 02-grid.html.
+Edit only this file. Delete this comment when you start.
+
+The gallery has seven tiles. The first, "Classic stack", is the wide one.
+Each tile is a colored box (.swatch) with a title under it. Write the
+styles for a phone first, then add media queries as the window grows.
+
+Window 320px to 639px wide: one column.
+
+  +----------------+
+  | Classic stack  |
+  +----------------+
+  | Chocolate chip |
+  +----------------+
+  | Blueberry      |
+  +----------------+
+  | ... (7 rows)
+
+Window 640px to 1023px wide: two columns. The wide tile spans both.
+
+  +-----------------------------+
+  | Classic stack (wide)        |
+  +--------------+--------------+
+  | Chocolate    | Blueberry    |
+  +--------------+--------------+
+  | Strawberry   | Matcha       |
+  +--------------+--------------+
+  | Ube          | Pandan       |
+  +--------------+--------------+
+
+Window 1024px and wider: four columns. The wide tile spans two of them, so
+the seven tiles fill exactly two rows.
+
+  +---------------------------+------------+------------+
+  | Classic stack (wide)      | Chocolate  | Blueberry  |
+  +------------+--------------+------------+------------+
+  | Strawberry | Matcha       | Ube        | Pandan     |
+  +------------+--------------+------------+------------+
+
+Requirements:
+
+1. .gallery has no bullets and no default margin or padding. It is a grid
+   with a gap of at least 1rem between tiles.
+
+2. Base styles (no media query) give one column. Use grid-template-columns
+   with a single track, such as 1fr.
+
+3. @media (min-width: 40rem) gives two columns. @media (min-width: 64rem)
+   gives four. Use min-width queries so each one builds on the one before.
+
+4. .tile-wide spans two columns, with grid-column: span 2. Set it inside
+   the 40rem media query, not in the base styles: a tile that spans two
+   columns in a one-column grid makes the grid add a second column.
+
+5. .swatch fills its tile's width (width: 100%) and keeps a 4:3 shape
+   (aspect-ratio: 4 / 3). Round its corners if you like.
+*/

@@ -80,3 +80,7 @@ Lessons without tests, such as the HTML and CSS lessons, still go through PR rev
 ## Publish a fix mid-cohort
 
 Commit the fix to `<org>/course` and tell students to run `git pull upstream main`. Lesson README fixes merge cleanly. Changes to starter files that students already edited cause merge conflicts, so change a starter only for lessons the cohort hasn't reached.
+
+## Lesson 29 setup
+
+Lesson 29 needs peer-review access and a shared class repo. Follow [lessons/29-working-on-a-team/instructor-setup.md](../lessons/29-working-on-a-team/instructor-setup.md) a few days before the lesson.

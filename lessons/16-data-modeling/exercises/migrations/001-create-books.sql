@@ -1,0 +1,6 @@
+-- Create the books table.
+--   id      a whole number the database generates, primary key
+--   title   text, required, not empty (a title of only spaces counts as empty)
+--   author  text, required, not empty (same rule)
+--   year    a whole number, required, from 1450 to 2100 inclusive
+-- TODO

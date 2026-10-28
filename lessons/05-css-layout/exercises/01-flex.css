@@ -1,0 +1,48 @@
+/*
+Layout 1: flexbox. Rebuild this layout for 01-flex.html. Open the page in
+your browser, reload after each change, and run `npm test 05` to check.
+Edit only this file. Delete this comment when you start.
+
+Target, with the window about 900px wide:
+
+  +--------------------------------------------------------------------+
+  | Pancake Lab                                  Recipes  Guides  About |
+  +--------------------------------------------------------------------+
+
+                              Pick a plan
+
+  +--------------------+  +--------------------+  +--------------------+
+  | Free               |  | Plus               |  | Team               |
+  | Ten recipes a      |  | Every recipe, plus |  | Everything in      |
+  | month.             |  | step-by-step ...   |  | Plus, for up to    |
+  |                    |  | (a long paragraph) |  | five cooks.        |
+  |                    |  |                    |  |                    |
+  | [ Start free ]     |  | [ Start Plus ]     |  | [ Start Team ]     |
+  +--------------------+  +--------------------+  +--------------------+
+
+  With the window about 400px wide, the three plans stack, one per row,
+  each as wide as the window.
+
+Requirements:
+
+1. .site-header is a flex container. The logo sits at the far left and the
+   nav at the far right (justify-content: space-between). Both are centered
+   vertically (align-items: center). Give it padding.
+
+2. The nav list (.site-nav ul) is a flex container with a gap of at least
+   1rem between links. Remove the bullets (list-style: none) and the default
+   margin and padding.
+
+3. .plans is a flex container with a gap of at least 1rem. Items wrap onto
+   new rows when they run out of room (flex-wrap: wrap).
+
+4. Each .plan grows to share the row equally (flex-grow of 1) and starts at
+   a flex-basis between 12rem and 20rem, so three fit on a wide window and
+   they stack on a narrow one. Shorthand: flex: 1 1 15rem. Give each plan
+   padding and a border so you can see its edges.
+
+5. The plans in a row are the same height by default. Make every .plan a
+   flex container with flex-direction: column, and give its .button a
+   margin-top of auto. That pushes every button to the bottom of its card,
+   so the buttons line up even when the paragraphs differ in length.
+*/

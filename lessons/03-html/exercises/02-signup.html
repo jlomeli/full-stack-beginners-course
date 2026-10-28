@@ -1,0 +1,32 @@
+<!--
+Build a sign-up page for the course from scratch. Delete this comment when you
+start. Run `npm test 03` to check your work.
+
+The page needs:
+- A doctype, <html lang="en">, a <head> with <meta charset="utf-8">, a viewport
+  <meta>, and a <title> that says "Sign up".
+- A <main> with one <h1>, "Create your account", and a <form> below it.
+- The form posts to /signup (method="post"). Give the form the accessible name
+  "Create your account" by pointing aria-labelledby at the <h1>'s id.
+
+The form has these fields. Every one gets a visible <label> tied to its control
+with matching for/id attributes. Never use a placeholder in place of a label.
+
+1. Full name. Text. Required. Autocomplete "name".
+2. Email. An email field. Required. Autocomplete "email".
+3. Password. A password field. Required. At least 8 characters. Autocomplete
+   "new-password". Below it, a paragraph that says "At least 8 characters."
+   Connect the paragraph to the field with aria-describedby so a screen reader
+   reads it after the label.
+4. Phone number. A telephone field. Optional. Autocomplete "tel".
+5. Programming experience. Three radio buttons that share one name: None,
+   Some, and Experienced. Group them in a <fieldset> with a <legend>. The
+   choice is required.
+6. How did you hear about us? A <select> whose first option is a blank
+   "Choose one" with value="" and which has at least three real options
+   (for example Friend, Search, Social media, Other). Optional.
+7. A checkbox, required, labeled "I agree to the code of conduct".
+8. A <button type="submit"> that says "Create account".
+
+Give every field a unique id.
+-->

@@ -75,7 +75,7 @@
             "Lay out pages with grid",
             "Make a page work from 320px to 1440px with media queries"
           ],
-          "exercises": ["Rebuild three layouts from screenshots", "Project 1: personal portfolio site"],
+          "exercises": ["Rebuild three layouts from text sketches", "Project 1: personal portfolio site"],
           "project": true,
           "sessions": 3
         }
@@ -215,7 +215,7 @@
             "Write and run migrations",
             "Choose constraints that block bad data"
           ],
-          "exercises": ["Design the schema for a library app", "Write migrations for it"]
+          "exercises": ["Design the schema for a library app in `01-design.md`", "Write migrations for it"]
         },
         {
           "id": "17",
@@ -271,7 +271,7 @@
             "Render lists and conditional UI",
             "Set up a project with Vite"
           ],
-          "exercises": ["Rebuild the product list from lesson 09 in React"]
+          "exercises": ["Rebuild the product list from lesson 09 in React: product card, filtered list, and filter controls"]
         },
         {
           "id": "21",
@@ -371,7 +371,7 @@
             "Find slow queries and add indexes",
             "Measure page performance with Lighthouse"
           ],
-          "exercises": ["Diagnose the three planted bugs in the deployed sample app"]
+          "exercises": ["Diagnose the three planted bugs in the sample app and record them in `diagnosis.md`"]
         }
       ]
     },
@@ -387,7 +387,7 @@
             "Give and receive code review",
             "Work in an existing codebase you did not write"
           ],
-          "exercises": ["Review two classmates' pull requests", "Fix a labeled issue in the class open-source repo"]
+          "exercises": ["Review two classmates' pull requests", "File one issue and fix a labeled issue in the class open-source repo", "Resolve a merge conflict"]
         },
         {
           "id": "30",

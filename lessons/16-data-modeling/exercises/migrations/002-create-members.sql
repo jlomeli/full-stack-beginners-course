@@ -1,0 +1,5 @@
+-- Create the members table.
+--   id      a whole number the database generates, primary key
+--   name    text, required, not empty (spaces only counts as empty)
+--   email   text, required, unique, must contain an @
+-- TODO

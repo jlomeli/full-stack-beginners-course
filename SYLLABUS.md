@@ -130,7 +130,7 @@ You will be able to:
 
 Exercises:
 
-- Rebuild three layouts from screenshots
+- Rebuild three layouts from text sketches
 - Project 1: personal portfolio site
 
 ## JavaScript
@@ -302,7 +302,7 @@ You will be able to:
 
 Exercises:
 
-- Design the schema for a library app
+- Design the schema for a library app in `01-design.md`
 - Write migrations for it
 
 ### 17. Connecting Node to PostgreSQL
@@ -365,7 +365,7 @@ You will be able to:
 
 Exercises:
 
-- Rebuild the product list from lesson 09 in React
+- Rebuild the product list from lesson 09 in React: product card, filtered list, and filter controls
 
 ### 21. State and effects
 
@@ -483,7 +483,7 @@ You will be able to:
 
 Exercises:
 
-- Diagnose the three planted bugs in the deployed sample app
+- Diagnose the three planted bugs in the sample app and record them in `diagnosis.md`
 
 ## Career
 
@@ -500,7 +500,8 @@ You will be able to:
 Exercises:
 
 - Review two classmates' pull requests
-- Fix a labeled issue in the class open-source repo
+- File one issue and fix a labeled issue in the class open-source repo
+- Resolve a merge conflict
 
 ### 30. Capstone project and job search
 

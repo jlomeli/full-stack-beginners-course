@@ -1,0 +1,96 @@
+/*
+This stylesheet styles broken.html, and five rules in it don't do what their
+authors wanted. Open broken.html in your browser, open DevTools, and use the
+Styles pane to see which rule wins for each element. A crossed-out
+declaration lost the cascade.
+
+What the page should look like:
+
+ - The page title (h1) is white on the dark header.
+ - "Return it" is a red button (#b91c1c). The other buttons are blue (#1d4ed8).
+ - "Preview" is a small button: padding 0.25rem 0.75rem. Other buttons use
+   padding 0.75rem 1.5rem.
+ - Paragraphs in the featured card use a 1.25rem font size. Other paragraphs
+   use 1rem.
+ - The note ("Only two copies...") is dark orange (#92400e).
+
+Fix the rules in this file. Do not edit broken.html. Do not use !important.
+Delete this comment when you finish.
+*/
+
+body {
+	margin: 0;
+	font-family: system-ui, sans-serif;
+	line-height: 1.5;
+	color: #1f2937;
+	background-color: #f9fafb;
+}
+
+.site-header {
+	padding: 2rem 1rem;
+	background-color: #111827;
+}
+
+.site-header h1 {
+	margin: 0;
+	color: #ffffff;
+}
+
+.site-header p {
+	margin: 0.5rem 0 0;
+	color: #d1d5db;
+}
+
+#page-title {
+	color: #374151;
+}
+
+main {
+	max-width: 40rem;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.card {
+	margin-bottom: 1rem;
+	padding: 1rem;
+	border: 1px solid #d1d5db;
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+}
+
+.featured {
+	font-size: 1.25rem;
+}
+
+p {
+	font-size: 1rem;
+}
+
+article p {
+	color: #4b5563 !important;
+}
+
+.note {
+	color: #92400e;
+}
+
+.button-small {
+	padding: 0.25rem 0.75rem;
+}
+
+.button {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 0.25rem;
+}
+
+.card .button {
+	background-color: #1d4ed8;
+}
+
+.button-danger {
+	background-color: #b91c1c;
+}

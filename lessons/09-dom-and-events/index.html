@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>The DOM and events</title>
+		<style>
+			body {
+				font-family: system-ui, sans-serif;
+				max-width: 40rem;
+				margin: 2rem auto;
+				padding: 0 1rem;
+			}
+			section {
+				margin-bottom: 3rem;
+			}
+			ul {
+				padding-left: 0;
+				list-style: none;
+			}
+			li {
+				display: flex;
+				gap: 0.75rem;
+				align-items: center;
+				padding: 0.4rem 0;
+				border-bottom: 1px solid #ddd;
+			}
+			li.done label {
+				text-decoration: line-through;
+				color: #777;
+			}
+			li.out-of-stock {
+				color: #777;
+			}
+			.category {
+				color: #555;
+				font-size: 0.9rem;
+			}
+			.price {
+				margin-left: auto;
+				font-variant-numeric: tabular-nums;
+			}
+			.badge {
+				font-size: 0.8rem;
+				color: #a00;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>The DOM and events</h1>
+
+		<section id="todo-app">
+			<h2>To-do list</h2>
+			<form id="todo-form">
+				<label for="todo-text">New task</label>
+				<input id="todo-text" type="text" autocomplete="off" />
+				<button type="submit">Add</button>
+			</form>
+			<ul id="todo-list"></ul>
+			<p id="todo-summary"></p>
+		</section>
+
+		<section id="product-app">
+			<h2>Products</h2>
+			<div role="search">
+				<label for="product-search">Search</label>
+				<input id="product-search" type="search" autocomplete="off" />
+				<label for="product-category">Category</label>
+				<select id="product-category">
+					<option value="all">All categories</option>
+				</select>
+				<label><input id="product-in-stock" type="checkbox" /> In stock only</label>
+			</div>
+			<p id="product-count"></p>
+			<ul id="product-list"></ul>
+		</section>
+
+		<script type="module" src="./main.js"></script>
+	</body>
+</html>

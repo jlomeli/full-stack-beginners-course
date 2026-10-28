@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Library log-in</title>
+		<style>
+			body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 2rem auto; padding: 0 1rem; }
+			form { display: grid; gap: 0.5rem; margin-block: 1rem; }
+			input, button { font: inherit; padding: 0.4rem; }
+			.error { color: #b00020; }
+		</style>
+	</head>
+	<body>
+		<h1>Library</h1>
+		<p id="status">Checking who you are...</p>
+		<p id="error" class="error" role="alert"></p>
+
+		<section id="logged-out" hidden>
+			<form id="signup">
+				<h2>Sign up</h2>
+				<input name="name" placeholder="Name" required />
+				<input name="email" type="email" placeholder="Email" required />
+				<input name="password" type="password" placeholder="Password (8+ characters)" required />
+				<button>Sign up</button>
+			</form>
+			<form id="login">
+				<h2>Log in</h2>
+				<input name="email" type="email" placeholder="Email" required />
+				<input name="password" type="password" placeholder="Password" required />
+				<button>Log in</button>
+			</form>
+		</section>
+
+		<section id="logged-in" hidden>
+			<button id="logout">Log out</button>
+			<h2>Books</h2>
+			<ul id="books"></ul>
+			<h2>Your loans</h2>
+			<ul id="loans"></ul>
+		</section>
+
+		<script type="module">
+			const $ = (selector) => document.querySelector(selector);
+
+			async function api(path, options = {}) {
+				const res = await fetch(path, {
+					method: options.method ?? 'GET',
+					headers: options.body ? { 'Content-Type': 'application/json' } : {},
+					body: options.body ? JSON.stringify(options.body) : undefined,
+				});
+				const data = res.status === 204 ? null : await res.json();
+				if (!res.ok) throw new Error(data.error);
+				return data;
+			}
+
+			async function render() {
+				$('#error').textContent = '';
+				let member = null;
+				try {
+					member = await api('/me');
+				} catch {}
+
+				$('#logged-out').hidden = member !== null;
+				$('#logged-in').hidden = member === null;
+				$('#status').textContent = member ? `Logged in as ${member.name} (${member.email})` : 'You are logged out.';
+				if (!member) return;
+
+				const [books, loans] = await Promise.all([api('/books'), api('/loans')]);
+				$('#books').replaceChildren(
+					...books.map((book) => {
+						const item = document.createElement('li');
+						const button = document.createElement('button');
+						button.textContent = 'Borrow';
+						button.addEventListener('click', () => submit(() => api('/loans', { method: 'POST', body: { bookId: book.id } })));
+						item.append(`${book.title} by ${book.author} `, button);
+						return item;
+					}),
+				);
+				$('#loans').replaceChildren(
+					...loans.map((loan) => {
+						const item = document.createElement('li');
+						item.textContent = `Book ${loan.bookId}, borrowed ${loan.borrowedAt}`;
+						return item;
+					}),
+				);
+			}
+
+			async function submit(action) {
+				try {
+					await action();
+					await render();
+				} catch (error) {
+					$('#error').textContent = error.message;
+				}
+			}
+
+			for (const id of ['signup', 'login']) {
+				$(`#${id}`).addEventListener('submit', (event) => {
+					event.preventDefault();
+					const body = Object.fromEntries(new FormData(event.target));
+					submit(() => api(`/${id}`, { method: 'POST', body }));
+				});
+			}
+			$('#logout').addEventListener('click', () => submit(() => api('/logout', { method: 'POST' })));
+
+			render();
+		</script>
+	</body>
+</html>
