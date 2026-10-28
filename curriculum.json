@@ -1,0 +1,408 @@
+{
+  "title": "Full Stack Web Development",
+  "sessionsPerWeek": 5,
+  "stack": ["HTML", "CSS", "JavaScript", "TypeScript", "Node.js", "Express", "PostgreSQL", "React", "Vitest", "Playwright", "GitHub Actions"],
+  "modules": [
+    {
+      "title": "Getting started",
+      "lessons": [
+        {
+          "id": "00",
+          "slug": "orientation",
+          "title": "Orientation and dev environment",
+          "objectives": [
+            "Install Node.js, Git, VS Code, and the GitHub CLI",
+            "Move around the file system from the terminal",
+            "Clone your course repo and run its tests"
+          ],
+          "exercises": ["Install the toolchain and save its version output for your lesson 01 pull request"]
+        },
+        {
+          "id": "01",
+          "slug": "git-and-github",
+          "title": "Git and GitHub: commits, branches, pull requests",
+          "objectives": [
+            "Explain what a commit, a branch, and a remote are",
+            "Create a branch, commit, push, and open a pull request",
+            "Respond to review comments with new commits"
+          ],
+          "exercises": ["Write an `about-me.md` and submit it as your first pull request", "Fix the review comment your instructor leaves on it"]
+        }
+      ]
+    },
+    {
+      "title": "Web foundations",
+      "lessons": [
+        {
+          "id": "02",
+          "slug": "how-the-web-works",
+          "title": "How the web works",
+          "objectives": [
+            "Trace a request from URL to rendered page: DNS, TCP, HTTP, HTML",
+            "Read requests and responses in the browser Network tab",
+            "Name the common HTTP methods and status codes"
+          ],
+          "exercises": ["Use `curl -v` on three sites and annotate the request and response headers", "Answer the HTTP status code quiz"]
+        },
+        {
+          "id": "03",
+          "slug": "html",
+          "title": "Semantic HTML and accessibility",
+          "objectives": [
+            "Structure a page with semantic elements",
+            "Build an accessible form with labels and validation attributes",
+            "Check a page with the browser accessibility tree"
+          ],
+          "exercises": ["Mark up a recipe page from a plain-text recipe", "Build a sign-up form that passes the accessibility checklist"]
+        },
+        {
+          "id": "04",
+          "slug": "css-fundamentals",
+          "title": "CSS fundamentals",
+          "objectives": [
+            "Apply selectors, specificity, and the cascade",
+            "Size elements with the box model",
+            "Use custom properties for colors and spacing"
+          ],
+          "exercises": ["Style the recipe page from lesson 03", "Fix the five specificity bugs in `broken.css`"]
+        },
+        {
+          "id": "05",
+          "slug": "css-layout",
+          "title": "CSS layout: flexbox, grid, responsive design",
+          "objectives": [
+            "Lay out components with flexbox",
+            "Lay out pages with grid",
+            "Make a page work from 320px to 1440px with media queries"
+          ],
+          "exercises": ["Rebuild three layouts from screenshots", "Project 1: personal portfolio site"],
+          "project": true,
+          "sessions": 3
+        }
+      ]
+    },
+    {
+      "title": "JavaScript",
+      "lessons": [
+        {
+          "id": "06",
+          "slug": "js-basics",
+          "title": "JavaScript basics",
+          "objectives": [
+            "Use values, variables, and operators",
+            "Control flow with conditionals and loops",
+            "Write and call functions that return values"
+          ],
+          "exercises": ["Temperature converter", "FizzBuzz", "Password strength checker"]
+        },
+        {
+          "id": "07",
+          "slug": "arrays-and-objects",
+          "title": "Arrays and objects",
+          "objectives": [
+            "Model data with arrays and objects",
+            "Transform data with map, filter, and reduce",
+            "Copy and compare objects without mutation bugs"
+          ],
+          "exercises": ["Gradebook statistics", "Shopping cart totals", "Group transactions by category"]
+        },
+        {
+          "id": "08",
+          "slug": "functions-and-scope",
+          "title": "Functions, scope, and closures",
+          "objectives": [
+            "Predict what a variable refers to in nested scopes",
+            "Write higher-order functions",
+            "Use closures to keep private state"
+          ],
+          "exercises": ["Write `once`, `memoize`, and `debounce`", "Build a counter factory"]
+        },
+        {
+          "id": "09",
+          "slug": "dom-and-events",
+          "title": "The DOM and events",
+          "objectives": [
+            "Select, create, and update elements",
+            "Handle clicks, input, and form submission",
+            "Keep the UI in sync with a single state object"
+          ],
+          "exercises": ["To-do list with add, complete, and delete", "Filterable product list"]
+        },
+        {
+          "id": "10",
+          "slug": "async-and-fetch",
+          "title": "Asynchronous JavaScript and fetch",
+          "objectives": [
+            "Explain the event loop at a whiteboard level",
+            "Use promises and async/await",
+            "Fetch JSON from an API and handle loading and error states"
+          ],
+          "exercises": ["Weather widget backed by a public API", "Retry a failing request with backoff"]
+        },
+        {
+          "id": "11",
+          "slug": "tooling-and-testing",
+          "title": "Modules, npm, and testing",
+          "objectives": [
+            "Split code into ES modules",
+            "Install and run packages with npm",
+            "Write unit tests with Vitest"
+          ],
+          "exercises": ["Write tests for an untested utility module", "Project 2: interactive quiz app with a test suite"],
+          "project": true,
+          "sessions": 3
+        }
+      ]
+    },
+    {
+      "title": "Back end",
+      "lessons": [
+        {
+          "id": "12",
+          "slug": "node-fundamentals",
+          "title": "Node.js fundamentals",
+          "objectives": [
+            "Run JavaScript outside the browser",
+            "Read and write files, and read environment variables",
+            "Build a small command-line tool"
+          ],
+          "exercises": ["Word-count CLI", "CSV-to-JSON converter"]
+        },
+        {
+          "id": "13",
+          "slug": "express",
+          "title": "HTTP servers with Express",
+          "objectives": [
+            "Create routes for each HTTP method",
+            "Write and order middleware",
+            "Serve static files and JSON"
+          ],
+          "exercises": ["Notes API with in-memory storage", "Request-logging middleware"]
+        },
+        {
+          "id": "14",
+          "slug": "rest-api-design",
+          "title": "REST API design, validation, and errors",
+          "objectives": [
+            "Design resource URLs and pick status codes",
+            "Validate request bodies at the boundary",
+            "Return consistent error responses"
+          ],
+          "exercises": ["Add validation and error handling to the Notes API", "Write integration tests with Supertest"]
+        }
+      ]
+    },
+    {
+      "title": "Databases",
+      "lessons": [
+        {
+          "id": "15",
+          "slug": "sql",
+          "title": "SQL with PostgreSQL",
+          "objectives": [
+            "Create tables and insert, update, and delete rows",
+            "Query with WHERE, ORDER BY, GROUP BY, and JOIN",
+            "Explain primary keys and foreign keys"
+          ],
+          "exercises": ["Twenty query challenges on a bookstore database"]
+        },
+        {
+          "id": "16",
+          "slug": "data-modeling",
+          "title": "Data modeling and migrations",
+          "objectives": [
+            "Model one-to-many and many-to-many relationships",
+            "Write and run migrations",
+            "Choose constraints that block bad data"
+          ],
+          "exercises": ["Design the schema for a library app", "Write migrations for it"]
+        },
+        {
+          "id": "17",
+          "slug": "node-and-postgres",
+          "title": "Connecting Node to PostgreSQL",
+          "objectives": [
+            "Query Postgres from Node with parameterized queries",
+            "Explain and prevent SQL injection",
+            "Use transactions"
+          ],
+          "exercises": ["Move the Notes API from memory to Postgres", "Project 3: REST API for the library app"],
+          "project": true,
+          "sessions": 3
+        }
+      ]
+    },
+    {
+      "title": "TypeScript",
+      "lessons": [
+        {
+          "id": "18",
+          "slug": "typescript-basics",
+          "title": "TypeScript basics",
+          "objectives": [
+            "Annotate variables, functions, and objects",
+            "Read and fix compiler errors",
+            "Convert a JavaScript module to TypeScript"
+          ],
+          "exercises": ["Convert the lesson 07 exercises to TypeScript"]
+        },
+        {
+          "id": "19",
+          "slug": "typescript-in-practice",
+          "title": "TypeScript in practice",
+          "objectives": [
+            "Model data with union types",
+            "Write generic functions",
+            "Parse untrusted input with Zod"
+          ],
+          "exercises": ["Type the library API end to end", "Model an order lifecycle with a discriminated union"]
+        }
+      ]
+    },
+    {
+      "title": "Front end with React",
+      "lessons": [
+        {
+          "id": "20",
+          "slug": "react-components",
+          "title": "React components and JSX",
+          "objectives": [
+            "Build components that take props",
+            "Render lists and conditional UI",
+            "Set up a project with Vite"
+          ],
+          "exercises": ["Rebuild the product list from lesson 09 in React"]
+        },
+        {
+          "id": "21",
+          "slug": "react-state",
+          "title": "State and effects",
+          "objectives": [
+            "Manage state with useState",
+            "Lift state up and pass callbacks down",
+            "Use useEffect only for syncing with outside systems"
+          ],
+          "exercises": ["To-do app in React", "Find the bugs in three misused effects"]
+        },
+        {
+          "id": "22",
+          "slug": "react-forms-and-data",
+          "title": "Forms and data fetching",
+          "objectives": [
+            "Build controlled forms with validation messages",
+            "Fetch from your own API with loading and error states",
+            "Test components with Testing Library"
+          ],
+          "exercises": ["Library app front end: list and add books"]
+        },
+        {
+          "id": "23",
+          "slug": "react-routing",
+          "title": "Routing and app structure",
+          "objectives": [
+            "Add client-side routes",
+            "Organize a growing React codebase by feature",
+            "Share state across routes"
+          ],
+          "exercises": ["Add book detail and edit pages to the library app"]
+        }
+      ]
+    },
+    {
+      "title": "Full stack",
+      "lessons": [
+        {
+          "id": "24",
+          "slug": "authentication",
+          "title": "Authentication and sessions",
+          "objectives": [
+            "Hash passwords",
+            "Log users in with cookie sessions",
+            "Protect routes on the server and the client"
+          ],
+          "exercises": ["Add sign-up, log-in, and log-out to the library app"]
+        },
+        {
+          "id": "25",
+          "slug": "web-security",
+          "title": "Web security basics",
+          "objectives": [
+            "Prevent XSS, CSRF, and SQL injection",
+            "Configure CORS correctly",
+            "Keep secrets out of Git"
+          ],
+          "exercises": ["Find and fix the six vulnerabilities in the sample app"]
+        },
+        {
+          "id": "26",
+          "slug": "testing-the-stack",
+          "title": "Testing across the stack",
+          "objectives": [
+            "Choose between unit, integration, and end-to-end tests",
+            "Write end-to-end tests with Playwright",
+            "Run tests in GitHub Actions"
+          ],
+          "exercises": ["Add Playwright tests for log-in and adding a book", "Project 4: full-stack library app"],
+          "project": true,
+          "sessions": 3
+        }
+      ]
+    },
+    {
+      "title": "Shipping",
+      "lessons": [
+        {
+          "id": "27",
+          "slug": "deployment",
+          "title": "Deployment and CI/CD",
+          "objectives": [
+            "Build for production and configure environment variables",
+            "Deploy a front end, an API, and a database",
+            "Deploy automatically when main changes"
+          ],
+          "exercises": ["Deploy the library app and post the live URL in your PR"]
+        },
+        {
+          "id": "28",
+          "slug": "debugging-production",
+          "title": "Debugging and performance in production",
+          "objectives": [
+            "Read logs and stack traces from a deployed app",
+            "Find slow queries and add indexes",
+            "Measure page performance with Lighthouse"
+          ],
+          "exercises": ["Diagnose the three planted bugs in the deployed sample app"]
+        }
+      ]
+    },
+    {
+      "title": "Career",
+      "lessons": [
+        {
+          "id": "29",
+          "slug": "working-on-a-team",
+          "title": "Working on a team",
+          "objectives": [
+            "Write clear issues and pull request descriptions",
+            "Give and receive code review",
+            "Work in an existing codebase you did not write"
+          ],
+          "exercises": ["Review two classmates' pull requests", "Fix a labeled issue in the class open-source repo"]
+        },
+        {
+          "id": "30",
+          "slug": "capstone",
+          "title": "Capstone project and job search",
+          "objectives": [
+            "Plan, build, and ship an app of your own design",
+            "Present your project and explain its trade-offs",
+            "Prepare your portfolio, resume, and GitHub profile"
+          ],
+          "exercises": ["Capstone: a full-stack app you design, shipped over three weeks with one PR per milestone"],
+          "project": true,
+          "sessions": 15
+        }
+      ]
+    }
+  ]
+}

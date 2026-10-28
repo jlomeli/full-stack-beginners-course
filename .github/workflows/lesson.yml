@@ -1,0 +1,32 @@
+name: Lesson checks
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    # The course source repo sets the COURSE_SOURCE variable to "true" so instructor PRs skip the lesson tests.
+    if: vars.COURSE_SOURCE != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Run this lesson's tests
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: npm test "$BRANCH"
+
+  curriculum:
+    if: vars.COURSE_SOURCE == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: SYLLABUS.md and lesson folders match curriculum.json
+        run: npm run check
