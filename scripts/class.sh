@@ -2,7 +2,7 @@
 # Instructor commands for running a cohort on GitHub.
 #
 #   scripts/class.sh provision   Create a private repo for each student in roster.csv. Safe to rerun.
-#   scripts/class.sh queue       List open student PRs waiting for your review, oldest first.
+#   scripts/class.sh queue       List open student PRs, oldest first.
 #   scripts/class.sh progress    Show which lessons each student has merged.
 #
 # Settings come from environment variables:
@@ -61,10 +61,13 @@ provision() {
 }
 
 queue() {
-	gh search prs --owner "$ORG" --state open --review-requested @me \
+	# Code owners don't request reviews automatically in private repos on GitHub Free,
+	# so list every open, non-draft student PR instead of only the ones requesting your review.
+	gh search prs --owner "$ORG" --state open --draft=false \
 		--sort created --order asc --limit 200 \
-		--json repository,title,url,createdAt \
-		--template '{{range .}}{{timeago .createdAt | printf "%-16s"}} {{.repository.name | printf "%-28s"}} {{.title}}{{"\n"}}{{printf "%17s" ""}}{{.url}}{{"\n"}}{{end}}'
+		--json repository,title,url,createdAt,author \
+		--jq ".[] | select(.repository.name | startswith(\"$PREFIX\"))" |
+		jq -r '"\(.createdAt[0:10])  \(.repository.name)  \(.title)\n            \(.url)"'
 }
 
 progress() {

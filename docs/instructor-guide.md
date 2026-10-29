@@ -7,7 +7,7 @@ How to set up a cohort, review submissions, and track progress. For why the cour
 1. Create a GitHub organization for the course, for example `my-bootcamp`. Organizations on the free plan can hold unlimited private repos.
 2. Push this repository to `<org>/course` and make it public, or private with the organization's base permission set to **Read**. Students pull lesson updates from it, so they need read access.
 3. In `<org>/course`, open **Settings** > **Secrets and variables** > **Actions** > **Variables** and add `COURSE_SOURCE` with the value `true`. PRs to the course repo then run the curriculum check instead of the lesson tests.
-4. Edit `.github/CODEOWNERS` so it names you, or a team such as `@my-bootcamp/instructors` if TAs help review. GitHub requests a review from these people on every student PR.
+4. Edit `.github/CODEOWNERS` so it names you, or a team such as `@my-bootcamp/instructors` if TAs help review. On a paid plan, GitHub requests a review from these people on every student PR. On GitHub Free, [code owners only work in public repos](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners), so student repos get no automatic request. The queue below doesn't depend on it.
 5. Keep reference solutions out of this repo. Put them in a separate private repo, for example `<org>/course-solutions`, that has the same `lessons/` layout.
 
 ## Start a cohort
@@ -38,7 +38,7 @@ See your review queue, oldest first:
 ORG=my-bootcamp scripts/class.sh queue
 ```
 
-The queue lists open PRs that request your review. A PR enters the queue when a student opens it, through CODEOWNERS, and again when the student clicks **Re-request review** after fixing your comments.
+The queue lists every open, non-draft PR in a student repo, oldest first. It doesn't rely on review requests, which GitHub Free doesn't send automatically in private repos.
 
 For each PR:
 
@@ -54,6 +54,8 @@ For each PR:
 ### Draft reviews with Claude Code
 
 In Claude Code, ask "review the PRs in my queue" or give it a PR URL. The `review-student-pr` skill in `.claude/skills/` runs the lesson's tests on the student's code, applies this rubric and the lesson's review focus, and leaves the comments as a pending review. A pending review is visible only to you. Open the PR's **Files changed** tab, edit or delete comments, and submit with **Review changes**. Nothing reaches the student until you submit.
+
+To draft reviews automatically, install the background job described in `.claude/skills/review-student-pr/SKILL.md` under **Run it automatically**. Every 10 minutes it drafts a pending review for each new PR or new push and shows a macOS notification.
 
 ## Track progress
 

@@ -1,2 +1,3 @@
-# Every student PR requests a review from the instructor. Use a team such as @your-org/instructors to include TAs.
+# On paid plans, every student PR requests a review from the instructor. On GitHub Free, code owners work only in
+# public repos, so private student repos ignore this file. Use a team such as @your-org/instructors to include TAs.
 * @jlomeli

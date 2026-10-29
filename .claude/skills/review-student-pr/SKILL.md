@@ -101,3 +101,29 @@ Packets stay in `/tmp/review/` so the instructor can compare drafts across round
 - The CI check name is `test`. In student repos `curriculum` is always skipped. That's expected.
 - The pending review must be submitted by the instructor on GitHub. You cannot approve a PR the authenticated user opened, which only matters when testing in a sandbox.
 - If `package.json` in the student repo differs from the course's (they ran `npm install` with a new package), fetch runs `npm ci` in `code/` instead of linking `node_modules`, and that dependency change is itself worth a `question:`.
+
+## Run it automatically
+
+`auto-review.sh` drafts a pending review for every student PR that needs one. It runs this skill headlessly with `claude -p`, one PR at a time, as the instructor. A macOS LaunchAgent runs it every 10 minutes.
+
+What counts as needing a review: `queue.mjs list` prints every open, non-draft PR in an `ORG` repo whose name starts with `PREFIX` (default `fullstack-`), opened by someone other than you, whose head commit has no draft yet and that has no pending review of yours. Review requests aren't used, because GitHub Free doesn't apply code owners to private repos. A student's new push is a new head commit, so it gets a new draft after you've submitted the previous review. A head commit is recorded in `~/.local/state/review-student-pr/drafted.json` only after a pending review really appears, so a failed run retries on the next tick.
+
+The headless agent may only run `review.mjs`, read-only `gh pr` commands, read files, and write inside `/tmp/review`. `Edit(//tmp/review/**)` rules cover the Write tool too, and on macOS `/tmp` is `/private/tmp`. It can't submit, comment, or merge.
+
+```sh
+S=.claude/skills/review-student-pr
+DRY_RUN=1 $S/auto-review.sh          # list what would be reviewed, post nothing
+$S/auto-review.sh                    # review the queue now (about 3 minutes per PR)
+INCLUDE_OWN=1 $S/auto-review.sh      # also include your own PRs, for testing in a sandbox repo
+```
+
+The LaunchAgent is `~/Library/LaunchAgents/com.jlomeli.review-student-pr.plist`. It sets `ORG=jlomeli`, runs every 600 seconds and at login, and logs to `~/Library/Logs/review-student-pr.log`.
+
+```sh
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.jlomeli.review-student-pr.plist   # turn on
+launchctl bootout gui/$(id -u)/com.jlomeli.review-student-pr                                   # turn off
+launchctl kickstart gui/$(id -u)/com.jlomeli.review-student-pr                                 # run now
+tail -f ~/Library/Logs/review-student-pr.log
+```
+
+Limits: it runs only while the Mac is awake and logged in. Each review uses the instructor's Claude plan, at about 3 minutes per PR. If `gh` or `claude` is logged out, the log says so and nothing is posted. To re-draft a commit, delete its line from `drafted.json` and delete the pending review on GitHub.
