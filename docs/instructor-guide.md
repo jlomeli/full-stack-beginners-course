@@ -51,6 +51,10 @@ For each PR:
 
 [The review guide](review-guide.md) has the rubric and comment patterns that keep feedback consistent across reviewers.
 
+### Draft reviews with Claude Code
+
+In Claude Code, ask "review the PRs in my queue" or give it a PR URL. The `review-student-pr` skill in `.claude/skills/` runs the lesson's tests on the student's code, applies this rubric and the lesson's review focus, and leaves the comments as a pending review. A pending review is visible only to you. Open the PR's **Files changed** tab, edit or delete comments, and submit with **Review changes**. Nothing reaches the student until you submit.
+
 ## Track progress
 
 ```sh

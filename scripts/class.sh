@@ -36,6 +36,15 @@ repo_for() {
 	echo "$ORG/$PREFIX$(echo "$1" | tr '[:upper:]' '[:lower:]')"
 }
 
+# Push over the protocol gh is set up for, so it works with SSH keys as well as HTTPS credentials.
+push_url() {
+	if [[ "$(gh config get git_protocol -h github.com 2>/dev/null)" == ssh ]]; then
+		echo "git@github.com:$1.git"
+	else
+		echo "https://github.com/$1.git"
+	fi
+}
+
 provision() {
 	[[ -f "$ROSTER" ]] || { echo "No roster at $ROSTER. Copy roster.example.csv to roster.csv and fill it in." >&2; exit 1; }
 	for github in $(students); do
@@ -45,7 +54,7 @@ provision() {
 			echo "  repo exists, skipping create"
 		else
 			run gh repo create "$repo" --private --description "Full stack course work for $github"
-			run git -C "$ROOT" push "https://github.com/$repo.git" main:main
+			run git -C "$ROOT" push "$(push_url "$repo")" main:main
 		fi
 		run gh api --silent -X PUT "repos/$repo/collaborators/$github" -f permission=push
 	done
